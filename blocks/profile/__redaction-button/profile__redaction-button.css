@@ -1,0 +1,20 @@
+.profile__redaction-button{
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url(../../../images/pen.png);
+    background-position: center;
+    background-size: 10px 10px;
+    background-repeat: no-repeat;
+    border: 1px solid #FFFFFF;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    top: 5px;
+    transition: opacity .2s linear;
+}
+.profile__redaction-button:active, .profile__redaction-button:focus{
+    outline: none;
+}
+.profile__redaction-button:hover{
+    cursor: pointer;
+   opacity: .6 ;
+}

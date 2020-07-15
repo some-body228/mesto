@@ -1,0 +1,10 @@
+.elements__card{
+    list-style-type: none;
+    background-color: white;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}

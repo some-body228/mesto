@@ -1,0 +1,32 @@
+.profile__button{
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url(../../../images/+.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 22px 22px;
+    border:2px solid #FFFFFF;
+    height: 50px;
+    width: 150px;
+    align-self: center;
+    margin-left: auto;
+    transition: opacity .2s linear;
+}
+.profile__button:active, .profile__button:focus{
+    outline: none;
+}
+.profile__button:hover{
+    cursor: pointer;
+    opacity: .6;
+}
+@media screen and (max-width: 600px){
+    .profile__button{
+        display: block;
+        margin: 36px auto 0;
+        width: 90%;
+    }
+}
+@media screen and (max-width: 400px){
+    .profile__button{
+        width: 100%;
+    }
+}
