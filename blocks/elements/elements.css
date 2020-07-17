@@ -4,12 +4,22 @@
 @import url(./__like-button/elements__like-button.css);
 @import url(./__image/elements__image.css);
 .elements{
-    width: 80%;
+    width: 69%;
     margin: 47px auto 0;
 
+}
+@media screen and (max-width: 1000px){
+    .elements{
+        width: 80%;
+    }
 }
 @media screen and (max-width: 800px){
     .elements{
         width: 90%;
+    }
+}
+@media screen and (max-width: 600px){
+    .elements{
+        width: 93%;
     }
 }

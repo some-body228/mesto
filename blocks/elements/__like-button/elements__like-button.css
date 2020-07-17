@@ -6,7 +6,12 @@
     background-image: url(../../../images/like.svg);
     background-position: center;
     background-size: cover;
-    position: absolute;
-    right: 30px;
-    bottom: 24px;
+    margin-right: 30px;
+    transition: opacity .2s linear;
+}
+.elements__like-button:active, .elements__like-button:focus{
+    outline: none;
+}
+.elements__like-button:hover{
+    opacity: 0.8;
 }

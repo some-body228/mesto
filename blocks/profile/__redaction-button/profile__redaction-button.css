@@ -1,6 +1,6 @@
 .profile__redaction-button{
     background-color: rgba(0, 0, 0, 0);
-    background-image: url(../../../images/pen.png);
+    background-image: url(../../../images/pen.svg);
     background-position: center;
     background-size: 10px 10px;
     background-repeat: no-repeat;
@@ -17,4 +17,11 @@
 .profile__redaction-button:hover{
     cursor: pointer;
    opacity: .6 ;
+}
+@media screen and (max-width:600px){
+    .profile__redaction-button{
+        width: 18px;
+        height: 18px;
+        position: static;
+    }
 }
