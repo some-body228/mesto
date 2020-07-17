@@ -9,6 +9,7 @@
     margin: 48px auto 0;
     display: block;
     transition: opacity .2s linear;
+    margin-bottom: 36px;
 }
 .popup__save-button:active, .popup__save-button:focus{
     outline: none;

@@ -1,9 +1,10 @@
 @import url(./__logo/header__logo.css);
 .header{
     width: 69%;
-    margin: 5% auto;
+    margin: 45px auto 36px;
     padding-bottom: 40px;
     border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+    max-width: 882px;
 }
 @media screen and (max-width: 1000px){
     .header{
