@@ -20,7 +20,7 @@ function formSubmitHandler(evt) {
     evt.preventDefault();
     name.textContent=popupName.value;
     cap.textContent=popupCap.value;
-    popupClose();
+    popupOpenClose();
 
 }
 openBtn.addEventListener("click", popupOpenClose);
