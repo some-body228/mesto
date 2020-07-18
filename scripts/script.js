@@ -8,12 +8,12 @@ let form = document.querySelector(".popup__form");
 let popupName = document.querySelector(".popup__input[name='user-name']");
 let popupCap = document.querySelector(".popup__input[name='user-caption']");
 function popupOpenClose(){
-    if (popup.classList.length < 2){
-    popup.classList.add("popup_opened");
-    popupName.value = name.textContent;
-    popupCap.value = cap.textContent;
-    } else {
+    if (popup.classList.contains("popup_opened")){
         popup.classList.remove("popup_opened");
+    } else {
+        popup.classList.add("popup_opened");
+        popupName.value = name.textContent;
+        popupCap.value = cap.textContent;
     }
 }
 function formSubmitHandler(evt) {

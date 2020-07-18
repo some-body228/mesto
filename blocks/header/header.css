@@ -22,3 +22,8 @@
         padding-bottom: 30px;
     }
 }
+@media screen and (max-width: 500px){
+    .header{
+        margin-top: 28px;
+    }
+}
