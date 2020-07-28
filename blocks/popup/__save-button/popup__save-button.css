@@ -18,3 +18,9 @@
     cursor: pointer;
     opacity: 0.8;
 }
+@media screen and (max-width: 400px){
+    .popup__save-button{
+        margin: 36px auto 30px;
+        height: 40px;
+    }
+}

@@ -1,6 +1,7 @@
 .elements__list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 361px;
     grid-row-gap: 20px;
     grid-column-gap: 18px;
     padding: 0;
