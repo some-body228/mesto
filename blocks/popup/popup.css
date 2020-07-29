@@ -3,6 +3,9 @@
 @import url(./__input/popup__input.css);
 @import url(./__save-button/popup__save-button.css);
 @import url(./__exit-button/popup__exit-button.css);
+@import url(./__caption/popup__caption.css);
+@import url(./__image/popup__image.css);
+@import url(./__image-container/popup__image-container.css);
 
 .popup{
     background-color: rgba(0, 0, 0, .5);
@@ -16,3 +19,4 @@
     opacity: 0;
     transition: visibility 0.5s, opacity 0.5s linear; 
 }
+
