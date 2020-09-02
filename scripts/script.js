@@ -11,7 +11,6 @@ const list = document.querySelector(".elements__list");
 
 const exitBtn = popupRedct.querySelector(".popup__exit-button");
 
-const saveBtnAddCard = popupAddCard.querySelector(".popup__save-button");
 
 const exitBtnAddCard = popupAddCard.querySelector(".popup__exit-button");
 
@@ -106,3 +105,16 @@ formRedct.addEventListener("submit", formSubmitHandler);
 formAddCard.addEventListener("submit", formSubmitAddCard);
 
 
+function alterClose(pop){
+    document.addEventListener("keydown", function overClose(evt){
+        if(evt.keyCode === 27){
+            pop.classList.remove("popup_opened");
+        }
+    })
+    pop.addEventListener("click", function clickClose(evt) {
+        if(Array.from(evt.target.classList).includes("popup")){
+            pop.classList.remove("popup_opened");
+        }
+    })
+}
+Array.from(document.querySelectorAll(".popup")).forEach(popup => alterClose(popup))

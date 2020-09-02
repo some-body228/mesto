@@ -12,3 +12,4 @@
 .popup__input:active, .popup__input:focus{
     outline:none
 }
+@import url(./_invalid/popup__input_invalid.css)
