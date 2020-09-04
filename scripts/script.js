@@ -77,13 +77,11 @@ function setListeners(pop) {
 }
 function clickClose(evt) {
   if (evt.keyCode === 27) {
-    Array.from(document.querySelectorAll(".popup")).forEach((pop) =>
-      pop.classList.remove("popup_opened")
-    );
+    document.querySelector(".popup.popup_opened").classList.remove("popup_opened");
   }
 }
 function listenerToggle(pop) {
-  if (Array.from(pop.classList).includes("popup_opened")) {
+  if (pop.classList.contains("popup_opened")) {
     document.addEventListener("keydown", clickClose);
   } else {
     pop.removeEventListener("keydown", clickClose);
@@ -129,7 +127,7 @@ formAddCard.addEventListener("submit", formSubmitAddCard);
 
 function overClose(pop) {
   pop.addEventListener("click", function (evt) {
-    if (Array.from(evt.target.classList).includes("popup")) {
+    if (evt.target === evt.currentTarget) {
       pop.classList.remove("popup_opened");
     }
   });
