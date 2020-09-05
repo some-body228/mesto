@@ -77,7 +77,7 @@ function setListeners(pop) {
 }
 function clickClose(evt) {
   if (evt.keyCode === 27) {
-    document.querySelector(".popup.popup_opened").classList.remove("popup_opened");
+    popupToggle(document.querySelector(".popup.popup_opened"));
   }
 }
 function listenerToggle(pop) {
@@ -128,7 +128,7 @@ formAddCard.addEventListener("submit", formSubmitAddCard);
 function overClose(pop) {
   pop.addEventListener("click", function (evt) {
     if (evt.target === evt.currentTarget) {
-      pop.classList.remove("popup_opened");
+      popupToggle(pop);
     }
   });
 }
