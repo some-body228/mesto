@@ -1,3 +1,7 @@
+import {initialCards} from "../vendor/cards.js"   
+import {Card} from "./Card.js" 
+import {FormValidator} from "./FormValidator.js" 
+  
 const name = document.querySelector(".profile__user-name");
 const cap = document.querySelector(".profile__user-caption");
 
@@ -30,47 +34,19 @@ const userCard = document.querySelector("#user-card");
 popupName.value = name.textContent;
 popupCap.value = cap.textContent;
 
-function cardAdd(card) {
-  const filalCard = eventCreate(cardCreate(card));
-  list.prepend(filalCard);
-}
+const formList = Array.from(document.querySelectorAll(".popup__form"));
+formList.forEach((formEl) => {
+    const form = new FormValidator({
+      formSelector: ".popup__form",
+      inputSelector: ".popup__input",
+      submitButtonSelector: ".popup__save-button",
+      inactiveButtonClass: "popup__save-button_disabled",
+      inputErrorClass: "popup__input_invalid",
+      errorClass: "popup__error_active",
+    }, formEl)
+    form.enableValidation()
+  })
 
-function cardCreate(elem) {
-  userCard.content.querySelector(".elements__title").textContent = elem.name;
-  userCard.content.querySelector(".elements__image").src = elem.link;
-  const clone = userCard.content
-    .querySelector(".elements__card")
-    .cloneNode(true);
-  return clone;
-}
-function eventCreate(card) {
-  card
-    .querySelector(".elements__like-button")
-    .addEventListener("click", function like(event) {
-      event.target.classList.toggle("elements__like-button_liked");
-    });
-  card
-    .querySelector(".elements__trash-button")
-    .addEventListener("click", function trash(event) {
-      event.target.closest(".elements__card").remove();
-    });
-  card
-    .querySelector(".elements__image")
-    .addEventListener("click", function trash(event) {
-      popupToggle(popupImage);
-      popupImage.querySelector(".popup__image").src = event.target.src;
-      popupImage.querySelector(".popup__caption").textContent =
-        event.target.nextElementSibling.textContent;
-    });
-  return card;
-}
-function renderCards(cards) {
-  cards.forEach((el) => {
-    cardAdd(el);
-  });
-}
-
-renderCards(initialCards);
 function setListeners(pop) {
   if (pop.includes("popup_opened")) {
   }
@@ -92,21 +68,6 @@ function listenerToggle(pop) {
 function popupToggle(pop) {
   pop.classList.toggle("popup_opened");
   listenerToggle(pop);
-}
-
-function formSubmitHandler(evt) {
-  evt.preventDefault();
-  name.textContent = popupName.value;
-  cap.textContent = popupCap.value;
-  popupToggle(popupRedct);
-}
-function formSubmitAddCard(evt) {
-  evt.preventDefault();
-  const card = { name: popupPlace.value, link: popupLink.value };
-  cardAdd(card);
-  popupToggle(popupAddCard);
-  popupPlace.value = null;
-  popupLink.value = null;
 }
 exitBtnAddCard.addEventListener("click", function () {
   popupToggle(popupAddCard);
@@ -137,3 +98,26 @@ function overClose(pop) {
 Array.from(document.querySelectorAll(".popup")).forEach((popup) =>
   overClose(popup)
 );
+
+function renderCards(cards) {
+  cards.forEach((el) => {
+    const newCard = new Card(el, "#user-card")
+    list.prepend(newCard.cardAdd());
+  });
+}
+renderCards(initialCards);
+
+function formSubmitHandler(evt) {
+  evt.preventDefault();
+  name.textContent = popupName.value;
+  cap.textContent = popupCap.value;
+  popupToggle(popupRedct);
+}
+function formSubmitAddCard(evt) {
+  evt.preventDefault();
+  const card = new Card({ name: popupPlace.value, link: popupLink.value }, "#user-card");
+  list.prepend(card.cardAdd());
+  popupToggle(popupAddCard);
+  popupPlace.value = null;
+  popupLink.value = null;
+}
