@@ -1,9 +1,10 @@
-import {initialCards} from "../vendor/cards.js"   
-import {Card} from "./Card.js" 
-import {FormValidator} from "./FormValidator.js" 
-  
+
+import { initialCards } from "../vendor/cards.js"
+import { Card } from "./Card.js"
+import { FormValidator } from "./FormValidator.js"
+export const e = 1;
 const name = document.querySelector(".profile__user-name");
-const cap = document.querySelector(".profile__user-caption");
+const caption = document.querySelector(".profile__user-caption");
 
 const openBtn = document.querySelector(".profile__redaction-button");
 
@@ -32,69 +33,65 @@ const addCardBtn = document.querySelector(".profile__button");
 const userCard = document.querySelector("#user-card");
 
 popupName.value = name.textContent;
-popupCap.value = cap.textContent;
+popupCap.value = caption.textContent;
 
 const formList = Array.from(document.querySelectorAll(".popup__form"));
 formList.forEach((formEl) => {
-    const form = new FormValidator({
-      formSelector: ".popup__form",
-      inputSelector: ".popup__input",
-      submitButtonSelector: ".popup__save-button",
-      inactiveButtonClass: "popup__save-button_disabled",
-      inputErrorClass: "popup__input_invalid",
-      errorClass: "popup__error_active",
-    }, formEl)
-    form.enableValidation()
-  })
+  const form = new FormValidator({
+    formSelector: ".popup__form",
+    inputSelector: ".popup__input",
+    submitButtonSelector: ".popup__save-button",
+    inactiveButtonClass: "popup__save-button_disabled",
+    inputErrorClass: "popup__input_invalid",
+    errorClass: "popup__error_active",
+  }, formEl)
+  form.enableValidation()
+})
 
-function setListeners(pop) {
-  if (pop.includes("popup_opened")) {
-  }
-}
-function clickClose(evt) {
+function handleEscClick(evt) {
   if (evt.keyCode === 27) {
-    popupToggle(document.querySelector(".popup.popup_opened"));
+    togglePopup(document.querySelector(".popup.popup_opened"));
   }
 }
-function listenerToggle(pop) {
+function toggleListener(pop) {
   if (pop.classList.contains("popup_opened")) {
-    document.addEventListener("keydown", clickClose);
+    document.addEventListener("keydown", handleEscClick);
   } else {
-    pop.removeEventListener("keydown", clickClose);
+    pop.removeEventListener("keydown", handleEscClick);
   }
 }
-function popupToggle(pop) {
+export function togglePopup(pop) {
   pop.classList.toggle("popup_opened");
-  listenerToggle(pop);
+  toggleListener(pop);
 }
 exitBtnAddCard.addEventListener("click", function () {
-  popupToggle(popupAddCard);
+  togglePopup(popupAddCard);
 });
 exitBtnImage.addEventListener("click", function () {
-  popupToggle(popupImage);
+  togglePopup(popupImage);
 });
 
 addCardBtn.addEventListener("click", function () {
-  popupToggle(popupAddCard);
+  togglePopup(popupAddCard);
 });
 openBtn.addEventListener("click", function () {
-  popupToggle(popupRedct);
+  togglePopup(popupRedct);
 });
 exitBtn.addEventListener("click", function () {
-  popupToggle(popupRedct);
+  togglePopup(popupRedct);
 });
 formRedct.addEventListener("submit", formSubmitHandler);
 formAddCard.addEventListener("submit", formSubmitAddCard);
 
-function overClose(pop) {
+function handleOverClickClose(pop) {
   pop.addEventListener("click", function (evt) {
     if (evt.target === evt.currentTarget) {
-      popupToggle(pop);
+      togglePopup(pop);
     }
   });
 }
 Array.from(document.querySelectorAll(".popup")).forEach((popup) =>
-  overClose(popup)
+  handleOverClickClose(popup)
 );
 
 function renderCards(cards) {
@@ -108,14 +105,14 @@ renderCards(initialCards);
 function formSubmitHandler(evt) {
   evt.preventDefault();
   name.textContent = popupName.value;
-  cap.textContent = popupCap.value;
-  popupToggle(popupRedct);
+  caption.textContent = popupCap.value;
+  togglePopup(popupRedct);
 }
 function formSubmitAddCard(evt) {
   evt.preventDefault();
   const card = new Card({ name: popupPlace.value, link: popupLink.value }, "#user-card");
   list.prepend(card.cardAdd());
-  popupToggle(popupAddCard);
+  togglePopup(popupAddCard);
   popupPlace.value = null;
   popupLink.value = null;
 }
