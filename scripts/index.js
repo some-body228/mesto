@@ -35,18 +35,6 @@ const userCard = document.querySelector("#user-card");
 popupName.value = name.textContent;
 popupCap.value = caption.textContent;
 
-const formList = Array.from(document.querySelectorAll(".popup__form"));
-formList.forEach((formEl) => {
-  const form = new FormValidator({
-    formSelector: ".popup__form",
-    inputSelector: ".popup__input",
-    submitButtonSelector: ".popup__save-button",
-    inactiveButtonClass: "popup__save-button_disabled",
-    inputErrorClass: "popup__input_invalid",
-    errorClass: "popup__error_active",
-  }, formEl)
-  form.enableValidation()
-})
 
 function handleEscClick(evt) {
   if (evt.keyCode === 27) {
@@ -64,22 +52,7 @@ export function togglePopup(pop) {
   pop.classList.toggle("popup_opened");
   toggleListener(pop);
 }
-exitBtnAddCard.addEventListener("click", function () {
-  togglePopup(popupAddCard);
-});
-exitBtnImage.addEventListener("click", function () {
-  togglePopup(popupImage);
-});
 
-addCardBtn.addEventListener("click", function () {
-  togglePopup(popupAddCard);
-});
-openBtn.addEventListener("click", function () {
-  togglePopup(popupRedct);
-});
-exitBtn.addEventListener("click", function () {
-  togglePopup(popupRedct);
-});
 formRedct.addEventListener("submit", formSubmitHandler);
 formAddCard.addEventListener("submit", formSubmitAddCard);
 
@@ -116,3 +89,31 @@ function formSubmitAddCard(evt) {
   popupPlace.value = null;
   popupLink.value = null;
 }
+exitBtnAddCard.addEventListener("click", function () {
+  togglePopup(popupAddCard);
+});
+exitBtnImage.addEventListener("click", function () {
+  togglePopup(popupImage);
+});
+
+addCardBtn.addEventListener("click", function () {
+  togglePopup(popupAddCard);
+});
+openBtn.addEventListener("click", function () {
+  togglePopup(popupRedct);
+});
+exitBtn.addEventListener("click", function () {
+  togglePopup(popupRedct);
+});
+const formList = Array.from(document.querySelectorAll(".popup__form"));
+formList.forEach((formEl) => {
+  const form = new FormValidator({
+    formSelector: ".popup__form",
+    inputSelector: ".popup__input",
+    submitButtonSelector: ".popup__save-button",
+    inactiveButtonClass: "popup__save-button_disabled",
+    inputErrorClass: "popup__input_invalid",
+    errorClass: "popup__error_active",
+  }, formEl)
+  form.enableValidation()
+})

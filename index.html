@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link  rel="stylesheet" href="./pages/index.css">
+    <link rel="stylesheet" href="./pages/index.css">
     <title>Mesto</title>
 </head>
+
 <body class="page">
     <header class="header">
         <img class="header__logo" src="./images/logo.svg" alt="лого">
     </header>
-    <main >
+    <main>
         <section class="profile">
             <img class="profile__avatar" src="./images/avatar.jpg" alt="аватар">
             <div class="profile__info">
@@ -22,16 +24,18 @@
         </section>
         <section class="elements">
             <ul class="elements__list">
-                
+
             </ul>
         </section>
         <section class="popup" id="redaction">
             <div class="popup__container">
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <form class="popup__form" name="popup-form-reduct" novalidate>
-                    <input class="popup__input" id="user-name" type="text" placeholder="Имя" name="user-name" required minlength="2" maxlength="40">
+                    <input class="popup__input" id="user-name" type="text" placeholder="Имя" name="user-name" required
+                        minlength="2" maxlength="40">
                     <span class="popup__error" id="user-name-error"></span>
-                    <input class="popup__input" id="user-caption" type="text" placeholder="О себе" name="user-caption" required minlength="2" maxlength="200">
+                    <input class="popup__input" id="user-caption" type="text" placeholder="О себе" name="user-caption"
+                        required minlength="2" maxlength="200">
                     <span class="popup__error" id="user-caption-error"></span>
                     <button type="submit" class="popup__save-button">Cохранить</button>
                     <button type="button" class="popup__exit-button"></button>
@@ -42,11 +46,13 @@
             <div class="popup__container">
                 <h2 class="popup__title">Новое место</h2>
                 <form class="popup__form" name="popup-form-add-card" novalidate>
-                    <input class="popup__input" id="place" type="text" placeholder="Название" name="place" required minlength="1" maxlength="30">
+                    <input class="popup__input" id="place" type="text" placeholder="Название" name="place" required
+                        minlength="1" maxlength="30">
                     <span class="popup__error" id="place-error"></span>
-                    <input class="popup__input" id="link" type="url" placeholder="Ссылка на картинку" name="link" required >
+                    <input class="popup__input" id="link" type="url" placeholder="Ссылка на картинку" name="link"
+                        required>
                     <span class="popup__error" id="link-error"></span>
-                    <button type="submit" class="popup__save-button" >Создать</button>
+                    <button type="submit" class="popup__save-button">Создать</button>
                     <button type="button" class="popup__exit-button"></button>
                 </form>
             </div>
@@ -60,17 +66,17 @@
         </section>
     </main>
     <footer class="footer">
-         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
-        </footer>
-        <template id="user-card">
-            <li class="elements__card">
-                <img class="elements__image" src="" alt="картинка пользователя">
-                <h2 class="elements__title"></h2>
-                <button class="elements__like-button" type="button" ></button>
-                <button class="elements__trash-button" type="button"></button>
-            </li>
-        </template>
+        <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+    </footer>
+    <template id="user-card">
+        <li class="elements__card">
+            <img class="elements__image" src="" alt="картинка пользователя">
+            <h2 class="elements__title"></h2>
+            <button class="elements__like-button" type="button"></button>
+            <button class="elements__trash-button" type="button"></button>
+        </li>
+    </template>
     <script type="module" src="./scripts/index.js"></script>
-    <script type="module" src="./scripts/Card.js"></script>
 </body>
+
 </html>

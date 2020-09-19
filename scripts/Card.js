@@ -16,10 +16,15 @@ export class Card {
   }
 
   _cardCreate() {
-    this._cloneTitle.textContent = this._name;
-    this._cloneImage.src = this._link;
-    this._cloneImage.alt = "картинка пользователя"
-    return this._clone;
+    const clone = this._userCard.content
+      .querySelector(".elements__card")
+      .cloneNode(true);
+    const cloneTitle = clone.querySelector(".elements__title");
+    const cloneImage = clone.querySelector(".elements__image");
+    cloneTitle.textContent = this._name;
+    cloneImage.src = this._link;
+    cloneImage.alt = "картинка пользователя"
+    return clone;
   }
 
   _like(event) {
@@ -29,10 +34,18 @@ export class Card {
   _trash(event) {
     event.target.closest(".elements__card").remove();
   }
-
+  _openPopup(imageUrl, caption) {
+    togglePopup(popupImage);
+    console.log(caption)
+    popupUrl.src = imageUrl;
+    popupUrl.alt = "Картинка пользователя"
+    popupCaption.textContent = caption;
+  }
 
 
   _eventCreate(card) {
+    const caption = card.querySelector(".elements__title").textContent
+    const imageUrl = card.querySelector(".elements__image").src
     card
       .querySelector(".elements__like-button")
       .addEventListener("click", (evt) => { this._like(evt) });
@@ -41,13 +54,7 @@ export class Card {
       .addEventListener("click", (evt) => { this._trash(evt) });
     card
       .querySelector(".elements__image")
-      .addEventListener("click", () => {
-        togglePopup(popupImage);
-        popupUrl.src = event.target.src;
-        popupUrl.alt = "Картинка пользователя"
-        popupCaption.textContent =
-          event.target.nextElementSibling.textContent;
-      });
+      .addEventListener("click", () => this._openPopup(imageUrl, caption));
     return card;
   }
 

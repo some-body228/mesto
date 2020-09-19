@@ -52,11 +52,10 @@ export class FormValidator {
         this._checkInputValidity(form, input);
         this._toggleButtonState(inputList, formButton);
       });
-      document.addEventListener("click", () => {
-        form.addEventListener("submit", (evt) => {
-          this._checkInputValidity(form, input);
-          this._toggleButtonState(inputList, formButton);
-        });
+
+      form.addEventListener("submit", (evt) => {
+        this._checkInputValidity(form, input);
+        this._toggleButtonState(inputList, formButton);
       });
     });
 
