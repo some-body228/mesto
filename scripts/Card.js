@@ -1,12 +1,10 @@
-import { togglePopup } from "./index.js";
-const popupImage = document.querySelector("#image");
-const popupUrl = popupImage.querySelector(".popup__image");
-const popupCaption = popupImage.querySelector(".popup__caption")
+import { Popup } from "./Popup.js"; 
 export class Card {
-  constructor(data, classSelector) {
+  constructor({handleCardClick}, data, classSelector) {
     this._name = data.name;
     this._link = data.link;
     this._classSelector = classSelector;
+    this._handleCardClick = handleCardClick;
     this._userCard = document.querySelector(this._classSelector);
     this._clone = this._userCard.content
       .querySelector(".elements__card")
@@ -34,13 +32,6 @@ export class Card {
   _trash(event) {
     event.target.closest(".elements__card").remove();
   }
-  _openPopup(imageUrl, caption) {
-    togglePopup(popupImage);
-    console.log(caption)
-    popupUrl.src = imageUrl;
-    popupUrl.alt = "Картинка пользователя"
-    popupCaption.textContent = caption;
-  }
 
 
   _eventCreate(card) {
@@ -54,7 +45,7 @@ export class Card {
       .addEventListener("click", (evt) => { this._trash(evt) });
     card
       .querySelector(".elements__image")
-      .addEventListener("click", () => this._openPopup(imageUrl, caption));
+      .addEventListener("click", () => this._handleCardClick(caption,imageUrl));
     return card;
   }
 
