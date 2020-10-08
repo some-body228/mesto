@@ -1,56 +1,50 @@
-import { Popup } from "./Popup.js"; 
 export class Card {
-  constructor({handleCardClick}, data, classSelector) {
-    this._name = data.name;
+  constructor(handleCardClick, data, classSelector) {
+    this._place = data.place;
     this._link = data.link;
     this._classSelector = classSelector;
     this._handleCardClick = handleCardClick;
     this._userCard = document.querySelector(this._classSelector);
-    this._clone = this._userCard.content
-      .querySelector(".elements__card")
-      .cloneNode(true);
-    this._cloneTitle = this._clone.querySelector(".elements__title");
-    this._cloneImage = this._clone.querySelector(".elements__image");
   }
 
-  _cardCreate() {
+  _createCard() {
     const clone = this._userCard.content
       .querySelector(".elements__card")
       .cloneNode(true);
     const cloneTitle = clone.querySelector(".elements__title");
     const cloneImage = clone.querySelector(".elements__image");
-    cloneTitle.textContent = this._name;
+    cloneTitle.textContent = this._place;
     cloneImage.src = this._link;
-    cloneImage.alt = "картинка пользователя"
+    cloneImage.alt = this._place
     return clone;
   }
 
-  _like(event) {
+  _handleLikeButton(event) {
     event.target.classList.toggle("elements__like-button_liked");
   }
 
-  _trash(event) {
+  _handleTrashButton(event) {
     event.target.closest(".elements__card").remove();
   }
 
 
-  _eventCreate(card) {
+  _createEvent(card) {
     const caption = card.querySelector(".elements__title").textContent
     const imageUrl = card.querySelector(".elements__image").src
     card
       .querySelector(".elements__like-button")
-      .addEventListener("click", (evt) => { this._like(evt) });
+      .addEventListener("click", (evt) => { this._handleLikeButton(evt) });
     card
       .querySelector(".elements__trash-button")
-      .addEventListener("click", (evt) => { this._trash(evt) });
+      .addEventListener("click", (evt) => { this._handleTrashButton(evt) });
     card
       .querySelector(".elements__image")
-      .addEventListener("click", () => this._handleCardClick(caption,imageUrl));
+      .addEventListener("click", () => this._handleCardClick(caption, imageUrl));
     return card;
   }
 
-  cardAdd() {
-    const filalCard = this._eventCreate(this._cardCreate());
+  addCard() {
+    const filalCard = this._createEvent(this._createCard());
     return filalCard
   }
 

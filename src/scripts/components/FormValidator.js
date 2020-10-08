@@ -8,8 +8,8 @@ export class FormValidator {
     this._errorClass = data.errorClass;
     this._form = form
     this._inputList = Array.from(form.querySelectorAll(this._inputSelector));
+    this._formButton = form.querySelector(this._submitButtonSelector)
   }
-
 
   _showInputError(form, input, errorMesage) {
     const errorEl = form.querySelector(`#${input.id}-error`);
@@ -43,19 +43,18 @@ export class FormValidator {
     }
   };
   _setEventListeners(form) {
-    const inputList = Array.from(form.querySelectorAll(this._inputSelector));
-    const formButton = form.querySelector(this._submitButtonSelector);
-    inputList.forEach((input) => {
+    this._inputList.forEach((input) => {
+      //проблема исправлена, теперь эти строчки необходимы
       this._checkInputValidity(form, input);
-      this._toggleButtonState(inputList, formButton);
+      this._toggleButtonState(this._inputList, this._formButton);
       input.addEventListener("input", () => {
         this._checkInputValidity(form, input);
-        this._toggleButtonState(inputList, formButton);
+        this._toggleButtonState(this._inputList, this._formButton);
       });
-
+      //после субмита проверяется пустая форма добавления карточки, иначе она будет валидна
       form.addEventListener("submit", (evt) => {
         this._checkInputValidity(form, input);
-        this._toggleButtonState(inputList, formButton);
+        this._toggleButtonState(this._inputList, this._formButton);
       });
     });
 
