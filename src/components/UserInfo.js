@@ -14,7 +14,7 @@ export class UserInfo {
     }
     setUserInfo(data) {
 
-        document.querySelector(this._nameSelector).textContent = data.name
-        document.querySelector(this._captionSelector).textContent = data.caption
+        this._name.textContent = data.name
+        this._caption.textContent = data.caption
     }
 }

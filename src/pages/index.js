@@ -1,6 +1,6 @@
-import "../../pages/index.css"
+import "./index.css"
 import { Card } from "../components/Card.js"
-import { initialCards } from "../../vendor/cards.js"
+import { initialCards } from "../vendor/cards.js"
 import { FormValidator } from "../components/FormValidator.js"
 import { Section } from "../components/Section.js"
 import { PopupWithForm } from "../components/PopupWithForm.js"
@@ -19,19 +19,17 @@ const userInfo = new UserInfo(".profile__user-name", ".profile__user-caption")
 popupName.value = userInfo.getUserInfo().name;
 popupCap.value = userInfo.getUserInfo().caption;
 
-const popupRedct = new PopupWithForm({
-  submitPopup: function (data) {
-    userInfo.setUserInfo(data)
-    popupRedct.close();
-  }
+const popupRedct = new PopupWithForm(function (data) {
+  popupRedct.close();
+  userInfo.setUserInfo(data)
+  popupName.value = userInfo.getUserInfo().name;
+  popupCap.value = userInfo.getUserInfo().caption;
 }, "#redaction")
-const popupAddCard = new PopupWithForm({
-  submitPopup: function (data) {
-    const card = new Card(popupImage.open.bind(popupImage), data, "#user-card");
-    cards.addItem(card.addCard());
-    this._form.reset()
-    popupAddCard.close();
-  }
+const popupAddCard = new PopupWithForm(function (data) {
+  const card = new Card(popupImage.open.bind(popupImage), data, "#user-card");
+  cards.addItem(card.addCard());
+  popupAddCard.close();
+
 }
   , "#add-card")
 

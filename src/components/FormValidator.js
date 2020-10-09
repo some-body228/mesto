@@ -43,17 +43,13 @@ export class FormValidator {
     }
   };
   _setEventListeners(form) {
+    this._toggleButtonState(this._inputList, this._formButton);
     this._inputList.forEach((input) => {
-      //проблема исправлена, теперь эти строчки необходимы
-      this._checkInputValidity(form, input);
-      this._toggleButtonState(this._inputList, this._formButton);
       input.addEventListener("input", () => {
         this._checkInputValidity(form, input);
         this._toggleButtonState(this._inputList, this._formButton);
       });
-      //после субмита проверяется пустая форма добавления карточки, иначе она будет валидна
       form.addEventListener("submit", (evt) => {
-        this._checkInputValidity(form, input);
         this._toggleButtonState(this._inputList, this._formButton);
       });
     });
