@@ -1,9 +1,9 @@
-export  class Section {
-    constructor({data, render},containSelector){
+export class Section {
+    constructor({ data, render }, containSelector) {
         this._items = data,
-        this._render = render,
-        this._containSelector = containSelector,
-        this._addItem = document.querySelector(this._containSelector)
+            this._render = render,
+            this._containSelector = containSelector,
+            this._addItem = document.querySelector(this._containSelector)
     }
     renderer() {
         this._items.forEach(element => {

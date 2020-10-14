@@ -13,7 +13,6 @@ export class UserInfo {
 
     }
     setUserInfo(data) {
-
         this._name.textContent = data.name
         this._caption.textContent = data.caption
     }

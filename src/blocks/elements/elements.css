@@ -4,6 +4,8 @@
 @import url(./__like-button/elements__like-button.css);
 @import url(./__image/elements__image.css);
 @import url(./__trash-button/elements__trash-button.css);
+@import url(./__like-number/elements__like-number.css);
+@import url(./__like-container/elements__like-container.css);
 
 .elements{
     width: 69%;

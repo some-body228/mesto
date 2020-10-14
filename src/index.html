@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
+    <link rel="icon" href="https://i.ytimg.com/vi/npUDYLxDssc/maxresdefault.jpg">
 </head>
 
 <body class="page">
@@ -13,11 +14,14 @@
     </header>
     <main>
         <section class="profile">
-            <img class="profile__avatar" src="./images/avatar.jpg" alt="аватар">
+            <div class="profile__avatar-container" > 
+                <img class="profile__avatar" src="#" alt="аватар">
+                <div class= profile__avatar-redaction></div>
+            </div>
             <div class="profile__info">
-                <h1 class="profile__user-name">Жак-Ив Кусто</h1>
+                <h1 class="profile__user-name"></h1>
                 <button class="profile__redaction-button" type="button"></button>
-                <p class="profile__user-caption">Исследователь океана</p>
+                <p class="profile__user-caption"></p>
             </div>
             <button class="profile__button" type="button"></button>
         </section>
@@ -63,15 +67,48 @@
                 <button type="button" class="popup__exit-button popup__exit-button_type_image"></button>
             </div>
         </section>
+        <section class="popup" id="confirm">
+            <div class="popup__container">
+                <h2 class="popup__title">Вы уверены?</h2>
+                <button type="button" class="popup__exit-button "></button>
+                <button type="button" class="popup__save-button">Да</button>
+            </div>
+        </section>
+        <section class="popup" id="avatar">
+            <div class="popup__container">
+                <h2 class="popup__title">Обновить аватар</h2>
+                <form class="popup__form" name="popup-form-red-avatar" novalidate>
+                    <input class="popup__input" id="link" type="url" placeholder="Ссылка на картинку" name="linkAvatar"
+                        required>
+                    <span class="popup__error" id="link-error"></span>
+                    <button type="submit" class="popup__save-button">Сохранить</button>
+                    <button type="button" class="popup__exit-button"></button>
+                </form>
+            </div>
+        </section>
     </main>
     <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
+    <template id="other-card">
+        <li class="elements__card">
+            <img class="elements__image" src="#" alt="картинка пользователя">
+            <h2 class="elements__title"></h2>
+            <div class="elements__like-container">
+                <button class="elements__like-button" type="button"></button>
+                <span class="elements__like-number">0</span>
+            </div>
+            <button class="elements__trash-button" type="button" style="display: none;"></button>
+        </li>
+    </template>
     <template id="user-card">
         <li class="elements__card">
             <img class="elements__image" src="#" alt="картинка пользователя">
             <h2 class="elements__title"></h2>
-            <button class="elements__like-button" type="button"></button>
+            <div class="elements__like-container">
+                <button class="elements__like-button" type="button"></button>
+                <span class="elements__like-number">0</span>
+            </div>
             <button class="elements__trash-button" type="button"></button>
         </li>
     </template>
